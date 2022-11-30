@@ -2,6 +2,7 @@ import Card from "../UI/Card";
 import classes from './AddUser.module.css'
 import Button from "../UI/Button";
 import React, {useState} from "react";
+import MD5 from "crypto-js/md5";
 
 const AddUser = (props) => {
 
@@ -11,7 +12,12 @@ const AddUser = (props) => {
     const addUserHandler = (event) => {
         event.preventDefault();
         if((enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) || +enteredAge < 1) return;
-        console.log(enteredUsername, enteredAge);
+        const id = MD5((Math.floor(Math.random() * 2**64) / Math.floor(Math.random() * 2**16)) * Math.floor(Math.random() * 2**8)).toString()
+        props.onSaveUser({
+            name: enteredUsername,
+            age: enteredAge,
+            id: id
+        });
         setEnteredUsername('');
         setEnteredAge('');
     }
