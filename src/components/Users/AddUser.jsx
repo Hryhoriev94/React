@@ -9,9 +9,42 @@ const AddUser = (props) => {
     const [enteredUsername, setEnteredUsername] = useState('')
     const [enteredAge, setEnteredAge] = useState('')
 
+    const errorHandler = () => {
+        const errorModal = {};
+        if(enteredUsername.trim().length === 0 && enteredAge.trim().length === 0) {
+            errorModal.title = 'The user does not have a name and age';
+            errorModal.message = 'Please enter username and age';
+            props.onErrorSubmit(errorModal);
+            return;
+        }
+        if(enteredUsername.trim().length === 0) {
+            errorModal.title = 'Name is not be empty';
+            errorModal.message = 'Please, complete name of the user';
+            props.onErrorSubmit(errorModal);
+            return;
+        }
+        if(enteredAge.trim().length === 0) {
+            errorModal.title = 'Age is not be empty';
+            errorModal.message = 'Please, complete age of the user';
+            props.onErrorSubmit(errorModal);
+            return;
+        }
+        if(enteredAge.trim().length === 0) {
+            errorModal.title = 'Age can not be smaller than 1';
+            errorModal.message = 'Please enter a valid age';
+            props.onErrorSubmit(errorModal);
+            return;
+        }
+    }
+
+
     const addUserHandler = (event) => {
         event.preventDefault();
-        if((enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) || +enteredAge < 1) return;
+        if((enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) || +enteredAge < 1)
+        {
+            errorHandler();
+            return;
+        }
         const id = MD5((Math.floor(Math.random() * 2**64) / Math.floor(Math.random() * 2**16)) * Math.floor(Math.random() * 2**8)).toString()
         props.onSaveUser({
             name: enteredUsername,
