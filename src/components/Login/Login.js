@@ -57,7 +57,7 @@ const Login = (props) => {
       setFormIsValid(
           emailState.isValid && passwordState.isValid
       );
-    }, 500);
+    }, 100);
 
 
     return () => {
