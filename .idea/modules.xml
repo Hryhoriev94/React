@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/practice-project.iml" filepath="$PROJECT_DIR$/.idea/practice-project.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/react-course.iml" filepath="$PROJECT_DIR$/.idea/react-course.iml" />
+>>>>>>> 192d419160767c26a50ad3b4e62419dff3e75e2a
     </modules>
   </component>
 </project>
